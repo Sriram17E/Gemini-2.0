@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Smooch+Sans:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+}
+
+:root {
+    --text-color: #f4eded;
+    --subheading-color: #2f047a;
+    --placeholder-color: #875252;
+    --primary-color: #040430;
+    --secondary-color: #0b0b0b;
+    --secondary-hover-color: #ed0961;
+    --scrollbar-color: #e4e80a;
+}
+
+body .light-theme {
+    --text-color: #0b0b0b;
+    --primary-color: #f4eded;
+    --secondary-color: #f4f4f4;
+}
+
+body {
+    color: var(--text-color);
+    background: var(--primary-color);
+}
+
+.container {
+    overflow-y: auto;
+    padding: 32px 0 60px;
+    max-height: calc(100vh - 127px);
+    scrollbar-color: var(--scrollbar-color) transparent;
+}
+
+.container :where(.app-header, .suggestion, .message, .prompt-wrapper, .disclaimer-text) {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 20px;
+    max-width: 980px;
+}
+
+.container .app-header {
+    margin-top: 4vh;
+}
+
+.app-header .heading {
+    font-size: 3rem;
+    width: fit-content;
+    background: linear-gradient(to right, var(--subheading-color), var(--secondary-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.app-header .sub-heading {
+    font-size: 2.6rem;
+    margin-top: -5px;
+    color: var(--subheading-color);
+}
+
+.container .suggestion {
+    display: flex;
+    gap: 15px;
+    margin-top: 9.5vh;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.container :is(.app-header, .suggestion) {
+    display: none;
+}
+
+.suggestion .Suggestion-item {
+    width: 228px;
+    padding: 18px;
+    flex-shrink: 0;
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-radius: 12px;
+    background: var(--secondary-color);
+    transition: 0.3s ease;
+}
+
+.suggestion .Suggestion-item:hover {
+    background: var(--secondary-hover-color);
+}
+
+.suggestion .Suggestion-item .text {
+    font-size: 1.2rem;
+}
+
+.suggestion .Suggestion-item span {
+    height: 45px;
+    width: 45px;
+    margin-top: 35px;
+    display: flex;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #38d0bc;
+    background: var(--primary-color);
+}
+
+.suggestion .Suggestion-item:nth-child(2) span {
+    color: #f3a712;
+}
+
+.suggestion .Suggestion-item:nth-child(3) span {
+    color: #70f234;
+}
+
+.suggestion .Suggestion-item:nth-child(4) span {
+    color: #06879e;
+}
+
+.container .chats-container {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.chats-container .message {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+}
+
+.chats-container .bot-message .avatar {
+    height: 45px;
+    width: 45px;
+    flex-shrink: 0;
+    padding: 6px;
+    margin-right: -7px;
+    align-self: flex-start;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.avatar.loading {
+    animation: rotate 3s linear infinite;
+}
+
+.chats-container .message .message-text {
+    padding: 3px 16px;
+    word-wrap: break-word;
+    white-space: pre-line;
+}
+
+.chats-container .bot-message {
+    margin: 9px auto;
+}
+
+.chats-container .user-message {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.chats-container .user-message .message-text {
+    padding: 12px 16px;
+    max-width: 75%;
+    border-radius: 13px 13px 3px 13px;
+    background: var(--secondary-color);
+}
+
+.prompt-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 16px 0;
+    background: var(--primary-color);
+}
+
+.prompt-container :where(.prompt-wrapper, .prompt-form, .prompt-actions) {
+    display: flex;
+    gap: 12px;
+    height: 56px;
+    align-items: center;
+}
+
+.prompt-wrapper .prompt-form {
+    width: 100%;
+    height: 100%;
+    border-radius: 130px;
+    background: var(--secondary-color);
+}
+
+.prompt-form .prompt-input {
+    height: 100%;
+    width: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    padding-left: 24px;
+    color: var(--text-color);
+}
+
+.prompt-form .prompt-input::placeholder {
+    color: var(--placeholder-color);
+}
+
+.prompt-wrapper button {
+    width: 56px;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    color: var(--text-color);
+    background: var(--secondary-color);
+    transition: 0.3s ease;
+}
+
+.prompt-wrapper button:hover {
+    background: var(--secondary-hover-color);
+}
+
+.prompt-form #send-prompt-btn {
+    display: none;
+    background: var(--secondary-hover-color);
+    color: aliceblue;
+}
+
+.prompt-form .prompt-input:valid ~ .prompt-actions #send-prompt-btn {
+    display: block;
+}
+
+.prompt-container .disclaimer-text {
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 16px 20px 0;
+    color: var(--placeholder-color);
+} 
